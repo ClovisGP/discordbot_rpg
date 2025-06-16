@@ -1,0 +1,11 @@
+{
+    "botInitialised": "Weird Dices Friend initialisé avec succès.",
+    "DiceOf": "🎲 Dés de ",
+    "diceResult": "🎲Résultat du lancé🎲\n",
+    "success": "Succès",
+    "failures": "Echecs",
+    "advantages": "Avantages",
+    "threat": "Menaces",
+    "triumphs": "Triomphes",
+    "despair": "Désastres"
+}
