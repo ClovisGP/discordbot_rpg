@@ -1,5 +1,5 @@
-import french from './../languages/fr.json' assert { type: 'json' };
-import english from './../languages/en.json' assert { type: 'json' };
+import french from './../languages/fr.json' with { type: 'json' };
+import english from './../languages/en.json' with { type: 'json' };
 
 /**
  * Get the right translation

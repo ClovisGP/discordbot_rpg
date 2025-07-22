@@ -205,7 +205,7 @@ export async function execute(interaction) {
             `\n\t${success
             } ${getTranslation(interaction, "success")
             }\n\t${advantages
-            } ${getTranslation(advantages, "advantages")
+            } ${getTranslation(interaction, "advantages")
             }\n\t${triumphs} ${getTranslation(interaction, "triumphs")
             }\n\n\t${failures
             } ${getTranslation(interaction, "failures")
