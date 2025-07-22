@@ -14,34 +14,34 @@ export const data = {
             "required": true,
         },
         {
-            "name": "yellow",
-            "type": 4,
-            "description": "It is the number of yellow dices",
-            "required": true,
-        },
-        {
-            "name": "blue",
-            "type": 4,
-            "description": "It is the number of blue dices",
-            "required": true,
-        },
-        {
             "name": "purple",
             "type": 4,
             "description": "It is the number of purple dices",
             "required": true,
         },
         {
+            "name": "yellow",
+            "type": 4,
+            "description": "It is the number of yellow dices",
+            "required": false,
+        },
+        {
             "name": "red",
             "type": 4,
             "description": "It is the number of red dices",
-            "required": true,
+            "required": false,
+        },
+        {
+            "name": "blue",
+            "type": 4,
+            "description": "It is the number of blue dices",
+            "required": false,
         },
         {
             "name": "black",
             "type": 4,
             "description": "It is the number of black dices",
-            "required": true,
+            "required": false,
         },
     ],
 };
@@ -56,7 +56,7 @@ export async function execute(interaction) {
         let triumphs = 0;
         let despairs = 0;
 
-        for (let index = 0; index < interaction.options.get("green").value; index++) {
+        for (let index = 0; index < (interaction.options.getInteger("green") ?? 0); index++) {
             switch (Math.floor(Math.random() * 8) + 1) {
                 case 2:
                 case 3:
@@ -80,8 +80,7 @@ export async function execute(interaction) {
                     break;
             }
         }
-
-        for (let index = 0; index < interaction.options.get("purple").value; index++) {
+        for (let index = 0; index < (interaction.options.getInteger("purple") ?? 0); index++) {
             switch (Math.floor(Math.random() * 8) + 1) {
                 case 2:
                 case 3:
@@ -105,7 +104,7 @@ export async function execute(interaction) {
                     break;
             }
         }
-        for (let index = 0; index < interaction.options.get("yellow").value; index++) {
+        for (let index = 0; index < (interaction.options.getInteger("yellow") ?? 0); index++) {
             switch (Math.floor(Math.random() * 12) + 1) {
                 case 2:
                 case 3:
@@ -135,8 +134,7 @@ export async function execute(interaction) {
                     break;
             }
         }
-
-        for (let index = 0; index < interaction.options.get("red").value; index++) {
+        for (let index = 0; index < (interaction.options.getInteger("red") ?? 0); index++) {
             switch (Math.floor(Math.random() * 12) + 1) {
                 case 2:
                 case 3:
@@ -166,7 +164,7 @@ export async function execute(interaction) {
                     break;
             }
         }
-        for (let index = 0; index < interaction.options.get("blue").value; index++) {
+        for (let index = 0; index < (interaction.options.getInteger("blue") ?? 0); index++) {
             switch (Math.floor(Math.random() * 6) + 1) {
                 case 3:
                     advantages = advantages + 2;
@@ -185,8 +183,7 @@ export async function execute(interaction) {
                     break;
             }
         }
-
-        for (let index = 0; index < interaction.options.get("red").value; index++) {
+        for (let index = 0; index < (interaction.options.getInteger("red") ?? 0); index++) {
             switch (Math.floor(Math.random() * 6) + 1) {
                 case 3:
                 case 4:
