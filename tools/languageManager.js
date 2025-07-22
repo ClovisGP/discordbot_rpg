@@ -17,10 +17,10 @@ export default function getTranslation(
             : data.guildLocale
                 ? data.guildLocale
                 : "en-US";
-
+                
         if (keyToCompare.toLocaleLowerCase() === 'fr') {
             return french[key];
-        } else if (keyToCompare.toLocaleLowerCase() === 'en') {
+        } else {
             return english[key];
         }
     } catch (error) {
