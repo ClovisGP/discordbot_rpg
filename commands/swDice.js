@@ -43,174 +43,189 @@ export const data = {
             "description": "It is the number of black dices",
             "required": false,
         },
+        {
+            "name": "multi-launchs",
+            "type": 4,
+            "description": "How many time this configurations will be sent. By default, it is 1.",
+            "required": false,
+        },
     ],
 };
 
 export async function execute(interaction) {
     try {
         await interaction.deferReply();
-        let success = 0
-        let failures = 0;
-        let advantages = 0;
-        let threats = 0;
-        let triumphs = 0;
-        let despairs = 0;
 
-        for (let index = 0; index < (interaction.options.getInteger("green") ?? 0); index++) {
-            switch (Math.floor(Math.random() * 8) + 1) {
-                case 2:
-                case 3:
-                    success++;
-                    break;
-                case 4:
-                    success = success + 2;
-                    break;
-                case 5:
-                case 6:
-                    advantages++;
-                    break;
-                case 7:
-                    success++;
-                    advantages++;
-                    break;
-                case 8:
-                    advantages = advantages + 2;
-                    break;
-                default:
-                    break;
+        const multiLaunchs = interaction.options.getInteger("multi-launchs") ?? 1;
+        let response = "";
+
+        for (let indexLaunch = 0; indexLaunch < multiLaunchs; indexLaunch++) {
+            let success = 0
+            let failures = 0;
+            let advantages = 0;
+            let threats = 0;
+            let triumphs = 0;
+            let despairs = 0;
+
+            for (let index = 0; index < (interaction.options.getInteger("green") ?? 0); index++) {
+                switch (Math.floor(Math.random() * 8) + 1) {
+                    case 2:
+                    case 3:
+                        success++;
+                        break;
+                    case 4:
+                        success = success + 2;
+                        break;
+                    case 5:
+                    case 6:
+                        advantages++;
+                        break;
+                    case 7:
+                        success++;
+                        advantages++;
+                        break;
+                    case 8:
+                        advantages = advantages + 2;
+                        break;
+                    default:
+                        break;
+                }
             }
-        }
-        for (let index = 0; index < (interaction.options.getInteger("purple") ?? 0); index++) {
-            switch (Math.floor(Math.random() * 8) + 1) {
-                case 2:
-                case 3:
-                    failures++;
-                    break;
-                case 4:
-                    failures = failures + 2;
-                    break;
-                case 5:
-                case 6:
-                    threats++;
-                    break;
-                case 7:
-                    threats = threats + 2;
-                    break;
-                case 8:
-                    failures++;
-                    threats++;
-                    break;
-                default:
-                    break;
+            for (let index = 0; index < (interaction.options.getInteger("purple") ?? 0); index++) {
+                switch (Math.floor(Math.random() * 8) + 1) {
+                    case 2:
+                    case 3:
+                        failures++;
+                        break;
+                    case 4:
+                        failures = failures + 2;
+                        break;
+                    case 5:
+                    case 6:
+                        threats++;
+                        break;
+                    case 7:
+                        threats = threats + 2;
+                        break;
+                    case 8:
+                        failures++;
+                        threats++;
+                        break;
+                    default:
+                        break;
+                }
             }
-        }
-        for (let index = 0; index < (interaction.options.getInteger("yellow") ?? 0); index++) {
-            switch (Math.floor(Math.random() * 12) + 1) {
-                case 2:
-                case 3:
-                    success++;
-                    break;
-                case 4:
-                case 5:
-                    success = success + 2;
-                    break;
-                case 6:
-                    advantages++;
-                    break;
-                case 7:
-                case 8:
-                case 9:
-                    success++;
-                    advantages++;
-                    break;
-                case 10:
-                case 11:
-                    advantages = advantages + 2;
-                    break;
-                case 12:
-                    triumphs++;
-                    break;
-                default:
-                    break;
+            for (let index = 0; index < (interaction.options.getInteger("yellow") ?? 0); index++) {
+                switch (Math.floor(Math.random() * 12) + 1) {
+                    case 2:
+                    case 3:
+                        success++;
+                        break;
+                    case 4:
+                    case 5:
+                        success = success + 2;
+                        break;
+                    case 6:
+                        advantages++;
+                        break;
+                    case 7:
+                    case 8:
+                    case 9:
+                        success++;
+                        advantages++;
+                        break;
+                    case 10:
+                    case 11:
+                        advantages = advantages + 2;
+                        break;
+                    case 12:
+                        triumphs++;
+                        break;
+                    default:
+                        break;
+                }
             }
-        }
-        for (let index = 0; index < (interaction.options.getInteger("red") ?? 0); index++) {
-            switch (Math.floor(Math.random() * 12) + 1) {
-                case 2:
-                case 3:
-                    failures++;
-                    break;
-                case 4:
-                case 5:
-                    failures = failures + 2;
-                    break;
-                case 6:
-                case 7:
-                    threats++;
-                    break;
-                case 8:
-                case 9:
-                    failures++;
-                    threats++;
-                    break;
-                case 10:
-                case 11:
-                    threats = threats + 2;
-                    break;
-                case 12:
-                    despairs++;
-                    break;
-                default:
-                    break;
+            for (let index = 0; index < (interaction.options.getInteger("red") ?? 0); index++) {
+                switch (Math.floor(Math.random() * 12) + 1) {
+                    case 2:
+                    case 3:
+                        failures++;
+                        break;
+                    case 4:
+                    case 5:
+                        failures = failures + 2;
+                        break;
+                    case 6:
+                    case 7:
+                        threats++;
+                        break;
+                    case 8:
+                    case 9:
+                        failures++;
+                        threats++;
+                        break;
+                    case 10:
+                    case 11:
+                        threats = threats + 2;
+                        break;
+                    case 12:
+                        despairs++;
+                        break;
+                    default:
+                        break;
+                }
             }
-        }
-        for (let index = 0; index < (interaction.options.getInteger("blue") ?? 0); index++) {
-            switch (Math.floor(Math.random() * 6) + 1) {
-                case 3:
-                    advantages = advantages + 2;
-                    break;
-                case 4:
-                    advantages++;
-                    break;
-                case 5:
-                    success++;
-                    advantages++;
-                    break;
-                case 6:
-                    advantages++;
-                    break;
-                default:
-                    break;
+            for (let index = 0; index < (interaction.options.getInteger("blue") ?? 0); index++) {
+                switch (Math.floor(Math.random() * 6) + 1) {
+                    case 3:
+                        advantages = advantages + 2;
+                        break;
+                    case 4:
+                        advantages++;
+                        break;
+                    case 5:
+                        success++;
+                        advantages++;
+                        break;
+                    case 6:
+                        advantages++;
+                        break;
+                    default:
+                        break;
+                }
             }
-        }
-        for (let index = 0; index < (interaction.options.getInteger("red") ?? 0); index++) {
-            switch (Math.floor(Math.random() * 6) + 1) {
-                case 3:
-                case 4:
-                    failures++;
-                    break;
-                case 5:
-                case 6:
-                    threats++;
-                    break;
-                default:
-                    break;
+            for (let index = 0; index < (interaction.options.getInteger("red") ?? 0); index++) {
+                switch (Math.floor(Math.random() * 6) + 1) {
+                    case 3:
+                    case 4:
+                        failures++;
+                        break;
+                    case 5:
+                    case 6:
+                        threats++;
+                        break;
+                    default:
+                        break;
+                }
             }
+
+            response += 
+                `${indexLaunch === 0 ? "" : "\n\n----\n"}\n\t${success
+                } ${getTranslation(interaction, "success")
+                }\n\t${advantages
+                } ${getTranslation(interaction, "advantages")
+                }\n\t${triumphs} ${getTranslation(interaction, "triumphs")
+                }\n\n\t${failures
+                } ${getTranslation(interaction, "failures")
+                }\n\t${threats
+                } ${getTranslation(interaction, "threats")
+                }\n\t${despairs
+                } ${getTranslation(interaction, "despairs")
+                }`;
         }
 
-        RSVP(interaction, "diceResult", 1, 
-            `\n\t${success
-            } ${getTranslation(interaction, "success")
-            }\n\t${advantages
-            } ${getTranslation(interaction, "advantages")
-            }\n\t${triumphs} ${getTranslation(interaction, "triumphs")
-            }\n\n\t${failures
-            } ${getTranslation(interaction, "failures")
-            }\n\t${threats
-            } ${getTranslation(interaction, "threats")
-            }\n\t${despairs
-            } ${getTranslation(interaction, "despairs")
-            }`);
+
+        RSVP(interaction, "diceResult", 1, response);
     }
 
     catch (err) { // We don't care if a error occurs here
